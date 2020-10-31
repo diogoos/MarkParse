@@ -1,0 +1,25 @@
+title: MarkParse
+module: MarkParse
+author: daemonleaf
+author_url: https://github.com/daemonleaf
+github_url: https://github.com/daemonleaf/MarkParse
+
+output: docs
+clean: true
+min_acl: private
+
+copyright: 'This is free and unencumbered software released into the public domain. [View the complete license](https://github.com/daemonleaf/MarkParse/blob/master/UNLICENSE).'
+
+swift_version: 5.3
+
+theme: fullwidth 
+
+custom_categories:
+  - name: Default Parsers
+    children:
+      - FontModifier 
+      - HeadingParser
+      - ThematicBreakParser
+      - LinkParser
+      - CodeBlockParser
+      - BodyParser

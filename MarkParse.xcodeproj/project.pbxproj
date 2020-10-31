@@ -8,12 +8,50 @@
 
 /* Begin PBXBuildFile section */
 		FD2FB9362545C723004ED532 /* MarkParse.h in Headers */ = {isa = PBXBuildFile; fileRef = FD2FB9342545C723004ED532 /* MarkParse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD2FB93E2545C76D004ED532 /* MarkdownRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FB93D2545C76D004ED532 /* MarkdownRenderer.swift */; };
+		FD2FB94A2545D3D8004ED532 /* DefaultParsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FB9492545D3D8004ED532 /* DefaultParsers.swift */; };
+		FD2FB94E2545D409004ED532 /* FontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FB94D2545D409004ED532 /* FontModifier.swift */; };
+		FD2FB9582545EED2004ED532 /* HeadingParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FB9572545EED2004ED532 /* HeadingParser.swift */; };
+		FD2FB95B2545F763004ED532 /* ThematicBreakParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FB95A2545F762004ED532 /* ThematicBreakParser.swift */; };
+		FD2FB9602545FBF1004ED532 /* BodyTextParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FB95F2545FBF1004ED532 /* BodyTextParser.swift */; };
+		FD2FB9632545FD8E004ED532 /* LinkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FB9622545FD8E004ED532 /* LinkParser.swift */; };
+		FD2FB9662545FDD1004ED532 /* NSRegularExpression+StaticString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FB9652545FDD1004ED532 /* NSRegularExpression+StaticString.swift */; };
+		FD2FB96925463CBE004ED532 /* CodeBlockParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FB96825463CBE004ED532 /* CodeBlockParser.swift */; };
+		FD2FB96C25463FE2004ED532 /* RegexBasedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FB96B25463FE2004ED532 /* RegexBasedParser.swift */; };
+		FD2FB96F2546404B004ED532 /* BoldStyleParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FB96E2546404B004ED532 /* BoldStyleParser.swift */; };
+		FD2FB97225464139004ED532 /* MarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FB97125464139004ED532 /* MarkdownParser.swift */; };
+		FD2FB9762546E376004ED532 /* ItalicStyleParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FB9752546E376004ED532 /* ItalicStyleParser.swift */; };
+		FD2FB9792546E3D9004ED532 /* NSFont+Italic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FB9782546E3D9004ED532 /* NSFont+Italic.swift */; };
+		FD2FB97D2546E4FA004ED532 /* BoldItalicStyleParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FB97C2546E4FA004ED532 /* BoldItalicStyleParser.swift */; };
+		FD2FB9802546E551004ED532 /* StrikethroughStyleParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FB97F2546E551004ED532 /* StrikethroughStyleParser.swift */; };
+		FD2FB9832546E654004ED532 /* InlineCodeStyleParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FB9822546E654004ED532 /* InlineCodeStyleParser.swift */; };
+		FDE4CDF925471E91005022B3 /* TextColorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE4CDF825471E91005022B3 /* TextColorModifier.swift */; };
+		FDE4CE0525473598005022B3 /* BulletedListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE4CE0425473598005022B3 /* BulletedListParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FD2FB9312545C723004ED532 /* MarkParse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MarkParse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD2FB9342545C723004ED532 /* MarkParse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarkParse.h; sourceTree = "<group>"; };
 		FD2FB9352545C723004ED532 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD2FB93D2545C76D004ED532 /* MarkdownRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownRenderer.swift; sourceTree = "<group>"; };
+		FD2FB9492545D3D8004ED532 /* DefaultParsers.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = DefaultParsers.swift; sourceTree = "<group>"; };
+		FD2FB94D2545D409004ED532 /* FontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontModifier.swift; sourceTree = "<group>"; };
+		FD2FB9572545EED2004ED532 /* HeadingParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingParser.swift; sourceTree = "<group>"; };
+		FD2FB95A2545F762004ED532 /* ThematicBreakParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThematicBreakParser.swift; sourceTree = "<group>"; };
+		FD2FB95F2545FBF1004ED532 /* BodyTextParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyTextParser.swift; sourceTree = "<group>"; };
+		FD2FB9622545FD8E004ED532 /* LinkParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkParser.swift; sourceTree = "<group>"; };
+		FD2FB9652545FDD1004ED532 /* NSRegularExpression+StaticString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+StaticString.swift"; sourceTree = "<group>"; };
+		FD2FB96825463CBE004ED532 /* CodeBlockParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBlockParser.swift; sourceTree = "<group>"; };
+		FD2FB96B25463FE2004ED532 /* RegexBasedParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexBasedParser.swift; sourceTree = "<group>"; };
+		FD2FB96E2546404B004ED532 /* BoldStyleParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldStyleParser.swift; sourceTree = "<group>"; };
+		FD2FB97125464139004ED532 /* MarkdownParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownParser.swift; sourceTree = "<group>"; };
+		FD2FB9752546E376004ED532 /* ItalicStyleParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItalicStyleParser.swift; sourceTree = "<group>"; };
+		FD2FB9782546E3D9004ED532 /* NSFont+Italic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFont+Italic.swift"; sourceTree = "<group>"; };
+		FD2FB97C2546E4FA004ED532 /* BoldItalicStyleParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldItalicStyleParser.swift; sourceTree = "<group>"; };
+		FD2FB97F2546E551004ED532 /* StrikethroughStyleParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrikethroughStyleParser.swift; sourceTree = "<group>"; };
+		FD2FB9822546E654004ED532 /* InlineCodeStyleParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineCodeStyleParser.swift; sourceTree = "<group>"; };
+		FDE4CDF825471E91005022B3 /* TextColorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextColorModifier.swift; sourceTree = "<group>"; };
+		FDE4CE0425473598005022B3 /* BulletedListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletedListParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +84,37 @@
 		FD2FB9332545C723004ED532 /* MarkParse */ = {
 			isa = PBXGroup;
 			children = (
+				FD2FB9482545D3A9004ED532 /* DefaultParsers */,
 				FD2FB9342545C723004ED532 /* MarkParse.h */,
 				FD2FB9352545C723004ED532 /* Info.plist */,
+				FD2FB93D2545C76D004ED532 /* MarkdownRenderer.swift */,
+				FD2FB97125464139004ED532 /* MarkdownParser.swift */,
+				FD2FB96B25463FE2004ED532 /* RegexBasedParser.swift */,
+				FD2FB9652545FDD1004ED532 /* NSRegularExpression+StaticString.swift */,
+				FD2FB9782546E3D9004ED532 /* NSFont+Italic.swift */,
 			);
 			path = MarkParse;
+			sourceTree = "<group>";
+		};
+		FD2FB9482545D3A9004ED532 /* DefaultParsers */ = {
+			isa = PBXGroup;
+			children = (
+				FD2FB9492545D3D8004ED532 /* DefaultParsers.swift */,
+				FD2FB94D2545D409004ED532 /* FontModifier.swift */,
+				FDE4CDF825471E91005022B3 /* TextColorModifier.swift */,
+				FD2FB9572545EED2004ED532 /* HeadingParser.swift */,
+				FD2FB95A2545F762004ED532 /* ThematicBreakParser.swift */,
+				FD2FB95F2545FBF1004ED532 /* BodyTextParser.swift */,
+				FD2FB9622545FD8E004ED532 /* LinkParser.swift */,
+				FD2FB96825463CBE004ED532 /* CodeBlockParser.swift */,
+				FD2FB97C2546E4FA004ED532 /* BoldItalicStyleParser.swift */,
+				FD2FB96E2546404B004ED532 /* BoldStyleParser.swift */,
+				FD2FB9752546E376004ED532 /* ItalicStyleParser.swift */,
+				FD2FB97F2546E551004ED532 /* StrikethroughStyleParser.swift */,
+				FD2FB9822546E654004ED532 /* InlineCodeStyleParser.swift */,
+				FDE4CE0425473598005022B3 /* BulletedListParser.swift */,
+			);
+			path = DefaultParsers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -70,6 +135,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FD2FB9392545C723004ED532 /* Build configuration list for PBXNativeTarget "MarkParse" */;
 			buildPhases = (
+				FD2FB9552545EACD004ED532 /* ShellScript */,
 				FD2FB92C2545C723004ED532 /* Headers */,
 				FD2FB92D2545C723004ED532 /* Sources */,
 				FD2FB92E2545C723004ED532 /* Frameworks */,
@@ -94,6 +160,7 @@
 				TargetAttributes = {
 					FD2FB9302545C723004ED532 = {
 						CreatedOnToolsVersion = 12.0.1;
+						LastSwiftMigration = 1200;
 					};
 				};
 			};
@@ -125,11 +192,50 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		FD2FB9552545EACD004ED532 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FD2FB92D2545C723004ED532 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD2FB94E2545D409004ED532 /* FontModifier.swift in Sources */,
+				FD2FB94A2545D3D8004ED532 /* DefaultParsers.swift in Sources */,
+				FD2FB95B2545F763004ED532 /* ThematicBreakParser.swift in Sources */,
+				FD2FB96925463CBE004ED532 /* CodeBlockParser.swift in Sources */,
+				FD2FB93E2545C76D004ED532 /* MarkdownRenderer.swift in Sources */,
+				FD2FB96C25463FE2004ED532 /* RegexBasedParser.swift in Sources */,
+				FD2FB97D2546E4FA004ED532 /* BoldItalicStyleParser.swift in Sources */,
+				FD2FB9582545EED2004ED532 /* HeadingParser.swift in Sources */,
+				FD2FB9632545FD8E004ED532 /* LinkParser.swift in Sources */,
+				FDE4CE0525473598005022B3 /* BulletedListParser.swift in Sources */,
+				FD2FB9832546E654004ED532 /* InlineCodeStyleParser.swift in Sources */,
+				FD2FB9602545FBF1004ED532 /* BodyTextParser.swift in Sources */,
+				FD2FB9802546E551004ED532 /* StrikethroughStyleParser.swift in Sources */,
+				FD2FB9792546E3D9004ED532 /* NSFont+Italic.swift in Sources */,
+				FDE4CDF925471E91005022B3 /* TextColorModifier.swift in Sources */,
+				FD2FB9762546E376004ED532 /* ItalicStyleParser.swift in Sources */,
+				FD2FB9662545FDD1004ED532 /* NSRegularExpression+StaticString.swift in Sources */,
+				FD2FB96F2546404B004ED532 /* BoldStyleParser.swift in Sources */,
+				FD2FB97225464139004ED532 /* MarkdownParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +366,7 @@
 		FD2FB93A2545C723004ED532 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -276,6 +383,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ds.MarkParse;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -283,6 +391,7 @@
 		FD2FB93B2545C723004ED532 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
