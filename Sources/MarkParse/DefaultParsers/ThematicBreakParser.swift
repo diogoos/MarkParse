@@ -23,7 +23,15 @@ public struct ThematicBreakParser: MarkdownParser {
 
         let line = line.trimmingCharacters(in: .whitespacesAndNewlines)
         if line.trimmingCharacters(in: .whitespaces).filter({ $0 != "-" }).count == 0 {
+            #if canImport(AppKit)
             return ThematicBreakAttachment()
+
+            #elseif canImport(UIKit)
+            let str = NSMutableAttributedString(string: "\n")
+            str.append(ThematicBreakAttachment())
+            str.append(NSAttributedString(string: "\n"))
+            return str
+            #endif
         }
 
         return nil
@@ -55,23 +63,26 @@ public struct ThematicBreakParser: MarkdownParser {
     #elseif canImport(UIKit)
     internal class ThematicBreakAttachmentCell: MKTextAttachment {
         override func attachmentBounds(for textContainer: NSTextContainer?, proposedLineFragment lineFrag: CGRect, glyphPosition position: CGPoint, characterIndex charIndex: Int) -> CGRect {
-
             let width = (textContainer?.size.width) ?? 100
-            return CGRect(origin: .zero, size: CGSize(width: width, height: 2))
+            let bounds = CGRect(origin: .zero, size: CGSize(width: width, height: 1))
+            self.bounds = bounds
+            return bounds
         }
 
         override func image(forBounds imageBounds: CGRect, textContainer: NSTextContainer?, characterIndex charIndex: Int) -> UIImage? {
-            UIGraphicsBeginImageContext(bounds.size)
-            let ctx = UIGraphicsGetCurrentContext()
+            UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0)
 
-            let rect = CGRect(origin: .zero, size: bounds.size)
-            ctx?.setFillColor(UIColor.textColor.cgColor)
-            ctx?.fill(rect)
+            guard let ctx = UIGraphicsGetCurrentContext() else { return nil }
 
-            guard let drawnImage = UIGraphicsGetImageFromCurrentImageContext() else {
-                print("There was an issue drawing the thematic break attachment cell!!!")
-                return nil
-            }
+            let lineRect = CGRect(origin: .zero, size: bounds.size)
+            ctx.addRect(lineRect)
+            ctx.setFillColor(gray: 0.6, alpha: 1)
+            ctx.setStrokeColor(gray: 0.6, alpha: 1)
+            ctx.fillPath()
+
+            guard let drawnImage = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
+
+            UIGraphicsEndImageContext()
 
             return drawnImage
         }

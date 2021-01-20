@@ -105,7 +105,11 @@ public struct HeadingParser: MarkdownParser {
         ])
 
         // add a thematic break attachment
-        if headingLevel < 3 { result.append(ThematicBreakParser.ThematicBreakAttachment()) }
+        if headingLevel < 3 {
+            result.append(NSAttributedString(string: "\n"))
+            result.append(ThematicBreakParser.ThematicBreakAttachment())
+            result.append(NSAttributedString(string: "\n"))
+        }
 
         return result as NSAttributedString
     }
