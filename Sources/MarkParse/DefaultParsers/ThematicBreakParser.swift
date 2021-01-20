@@ -38,7 +38,7 @@ public struct ThematicBreakParser: MarkdownParser {
     }
 
     #if canImport(UIKit)
-    internal class ThematicBreakAttachmentCell: MKTextAttachment {
+    internal class ThematicBreakAttachmentCell: NSTextAttachment {
         override func attachmentBounds(for textContainer: NSTextContainer?, proposedLineFragment lineFrag: CGRect, glyphPosition position: CGPoint, characterIndex charIndex: Int) -> CGRect {
             let width = (textContainer?.size.width) ?? 100
             let bounds = CGRect(origin: .zero, size: CGSize(width: width, height: 1))
@@ -66,10 +66,10 @@ public struct ThematicBreakParser: MarkdownParser {
     }
     #elseif canImport(AppKit)
     /// Draws a thematic break
-    internal class ThematicBreakAttachmentCell: MKTextAttachmentCell {
+    internal class ThematicBreakAttachmentCell: NSTextAttachmentCell {
         /// Calculates the cell frame, which should begin at the farthest point,
         /// going to the end of the line, with a height of 15
-        internal override func cellFrame(for textContainer: MKTextContainer,
+        internal override func cellFrame(for textContainer: NSTextContainer,
                                          proposedLineFragment lineFrag: NSRect,
                                          glyphPosition position: NSPoint,
                                          characterIndex charIndex: Int) -> NSRect {
@@ -97,7 +97,7 @@ public struct ThematicBreakParser: MarkdownParser {
             #if canImport(UIKit)
             self.init(attachment: ThematicBreakAttachmentCell())
             #elseif canImport(AppKit)
-            let textAttachment = MKTextAttachment()
+            let textAttachment = NSTextAttachment()
             textAttachment.attachmentCell = ThematicBreakAttachmentCell()
             self.init(attachment: textAttachment)
             #endif

@@ -11,12 +11,10 @@ import UIKit
 public typealias MKFont = UIFont
 public typealias MKColor = UIColor
 public typealias MKUnderlineStyle = NSUnderlineStyle
+
 public typealias MKParagraphStyle = NSParagraphStyle
 public typealias MKMutableParagraphStyle = NSMutableParagraphStyle
-//public typealias MKTextAttachmentCell = NSTextAttachmentCell
 public typealias MKTextTab = NSTextTab
-public typealias MKTextContainer = NSTextContainer
-public typealias MKTextAttachment = NSTextAttachment
 
 extension UIFontDescriptor.SymbolicTraits {
     static let bold = traitBold
@@ -24,11 +22,25 @@ extension UIFontDescriptor.SymbolicTraits {
 }
 
 extension UIColor {
-    public static let textColor = UIColor.darkText
+    public static let textColor: UIColor = {
+        if #available(iOS 13.0, tvOS 13.0, *) {
+            return UIColor.label
+        } else {
+            #if os(tvOS)
+            return UIColor.black
+            #else
+            return UIColor.darkText
+            #endif
+        }
+    }()
 
     public static let backgroundColor: UIColor = {
         if #available(iOS 13.0, *) {
+            #if os(tvOS)
+            return UIColor.white
+            #else
             return UIColor.systemBackground
+            #endif
         } else {
             return UIColor.white
         }
@@ -41,12 +53,10 @@ import AppKit
 public typealias MKFont = NSFont
 public typealias MKColor = NSColor
 public typealias MKUnderlineStyle = NSUnderlineStyle
+
 public typealias MKParagraphStyle = NSParagraphStyle
 public typealias MKMutableParagraphStyle = NSMutableParagraphStyle
-public typealias MKTextAttachmentCell = NSTextAttachmentCell
 public typealias MKTextTab = NSTextTab
-public typealias MKTextContainer = NSTextContainer
-public typealias MKTextAttachment = NSTextAttachment
 
 extension NSColor {
     public static let backgroundColor = NSColor.windowBackgroundColor
@@ -54,6 +64,8 @@ extension NSColor {
 
 #else
 
-//fatalError("Unsupported platform: currently, MarkParse only works with UIKit & Appkit")
+// MarkParse is only extensively tested with MacOS and iOS
+// It should also be compatible with tvOS
+// WatchOS support is not available.
 
 #endif
