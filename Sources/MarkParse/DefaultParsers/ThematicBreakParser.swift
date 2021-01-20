@@ -37,30 +37,7 @@ public struct ThematicBreakParser: MarkdownParser {
         return nil
     }
 
-    #if canImport(AppKit)
-    /// Draws a thematic break
-    internal class ThematicBreakAttachmentCell: MKTextAttachmentCell {
-        /// Calculates the cell frame, which should begin at the farthest point,
-        /// going to the end of the line, with a height of 15
-        internal override func cellFrame(for textContainer: MKTextContainer,
-                                         proposedLineFragment lineFrag: NSRect,
-                                         glyphPosition position: NSPoint,
-                                         characterIndex charIndex: Int) -> NSRect {
-            NSRect(x: 0, y: 0, width: lineFrag.size.width, height: 15)
-        }
-
-        /// Draws the thematic break using the text color at half opacity, at the vertical center,
-        /// with a thickness of 1.5
-        internal override func draw(withFrame cellFrame: NSRect, in controlView: NSView?) {
-            MKColor.textColor.withAlphaComponent(0.5).set()
-
-            var fillFrame = cellFrame.insetBy(dx: 2, dy: 0)
-            fillFrame.origin.y += 15/2
-            fillFrame.size.height = 1.5
-            fillFrame.fill()
-        }
-    }
-    #elseif canImport(UIKit)
+    #if canImport(UIKit)
     internal class ThematicBreakAttachmentCell: MKTextAttachment {
         override func attachmentBounds(for textContainer: NSTextContainer?, proposedLineFragment lineFrag: CGRect, glyphPosition position: CGPoint, characterIndex charIndex: Int) -> CGRect {
             let width = (textContainer?.size.width) ?? 100
@@ -87,6 +64,29 @@ public struct ThematicBreakParser: MarkdownParser {
             return drawnImage
         }
     }
+    #elseif canImport(AppKit)
+    /// Draws a thematic break
+    internal class ThematicBreakAttachmentCell: MKTextAttachmentCell {
+        /// Calculates the cell frame, which should begin at the farthest point,
+        /// going to the end of the line, with a height of 15
+        internal override func cellFrame(for textContainer: MKTextContainer,
+                                         proposedLineFragment lineFrag: NSRect,
+                                         glyphPosition position: NSPoint,
+                                         characterIndex charIndex: Int) -> NSRect {
+            NSRect(x: 0, y: 0, width: lineFrag.size.width, height: 15)
+        }
+
+        /// Draws the thematic break using the text color at half opacity, at the vertical center,
+        /// with a thickness of 1.5
+        internal override func draw(withFrame cellFrame: NSRect, in controlView: NSView?) {
+            MKColor.textColor.withAlphaComponent(0.5).set()
+
+            var fillFrame = cellFrame.insetBy(dx: 2, dy: 0)
+            fillFrame.origin.y += 15/2
+            fillFrame.size.height = 1.5
+            fillFrame.fill()
+        }
+    }
     #endif
 
     /// The `ThematicBreakAttachmentCell`'s NSAttributedString representation
@@ -94,14 +94,12 @@ public struct ThematicBreakParser: MarkdownParser {
         /// Initialize a `ThematicBreakAttachmentCell` and add it to an empty attributed string
         internal override convenience init() {
 
-            #if canImport(AppKit)
-
+            #if canImport(UIKit)
+            self.init(attachment: ThematicBreakAttachmentCell())
+            #elseif canImport(AppKit)
             let textAttachment = MKTextAttachment()
             textAttachment.attachmentCell = ThematicBreakAttachmentCell()
             self.init(attachment: textAttachment)
-
-            #elseif canImport(UIKit)
-            self.init(attachment: ThematicBreakAttachmentCell())
             #endif
         }
     }

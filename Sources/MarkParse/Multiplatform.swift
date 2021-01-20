@@ -5,24 +5,7 @@
 //  Created by Diogo Silva on 01/20/21.
 //
 
-#if canImport(AppKit)
-
-import AppKit
-public typealias MKFont = NSFont
-public typealias MKColor = NSColor
-public typealias MKUnderlineStyle = NSUnderlineStyle
-public typealias MKParagraphStyle = NSParagraphStyle
-public typealias MKMutableParagraphStyle = NSMutableParagraphStyle
-public typealias MKTextAttachmentCell = NSTextAttachmentCell
-public typealias MKTextTab = NSTextTab
-public typealias MKTextContainer = NSTextContainer
-public typealias MKTextAttachment = NSTextAttachment
-
-extension NSColor {
-    public static let backgroundColor = NSColor.windowBackgroundColor
-}
-
-#elseif canImport(UIKit)
+#if canImport(UIKit)
 
 import UIKit
 public typealias MKFont = UIFont
@@ -50,6 +33,23 @@ extension UIColor {
             return UIColor.white
         }
     }()
+}
+
+#elseif canImport(AppKit)
+
+import AppKit
+public typealias MKFont = NSFont
+public typealias MKColor = NSColor
+public typealias MKUnderlineStyle = NSUnderlineStyle
+public typealias MKParagraphStyle = NSParagraphStyle
+public typealias MKMutableParagraphStyle = NSMutableParagraphStyle
+public typealias MKTextAttachmentCell = NSTextAttachmentCell
+public typealias MKTextTab = NSTextTab
+public typealias MKTextContainer = NSTextContainer
+public typealias MKTextAttachment = NSTextAttachment
+
+extension NSColor {
+    public static let backgroundColor = NSColor.windowBackgroundColor
 }
 
 #else

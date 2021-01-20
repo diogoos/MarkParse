@@ -52,10 +52,10 @@ public struct HeadingParser: MarkdownParser {
         let fontSize = baseFontSize * fontSizeConversionTable[level]!
         let fontDescriptor = fontFamily.fontDescriptor.withSize(fontSize)
 
-        #if canImport(AppKit)
-        return MKFont(descriptor: fontDescriptor, size: fontSize) ?? .systemFont(ofSize: fontSize)
-        #elseif canImport(UIKit)
+        #if canImport(UIKit)
         return MKFont(descriptor: fontDescriptor, size: fontSize)
+        #elseif canImport(AppKit)
+        return MKFont(descriptor: fontDescriptor, size: fontSize) ?? .systemFont(ofSize: fontSize)
         #endif
     }
 
