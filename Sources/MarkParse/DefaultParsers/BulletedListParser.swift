@@ -5,7 +5,7 @@
 //  Created by Diogo Silva on 10/26/20.
 //
 
-import Cocoa
+import Foundation
 
 /// Parses bulleted lists starting with `* ` and `- `
 public struct BulletedListParser: MarkdownParser {
@@ -25,10 +25,10 @@ public struct BulletedListParser: MarkdownParser {
     }
 
     /// The paragraph style for bullets
-    internal static let paragraphStyle: NSParagraphStyle = {
-        var style: NSMutableParagraphStyle
-        style = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle // swiftlint:disable:this force_cast
-        style.tabStops = [NSTextTab(textAlignment: .left, location: 15, options: .init())]
+    internal static let paragraphStyle: MKParagraphStyle = {
+        var style: MKMutableParagraphStyle
+        style = MKParagraphStyle.default.mutableCopy() as! MKMutableParagraphStyle // swiftlint:disable:this force_cast
+        style.tabStops = [MKTextTab(textAlignment: .left, location: 15, options: .init())]
         style.defaultTabInterval = 15
         style.firstLineHeadIndent = 0
         style.paragraphSpacing = 10

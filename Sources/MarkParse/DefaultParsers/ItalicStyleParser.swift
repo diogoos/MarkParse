@@ -5,18 +5,18 @@
 //  Created by Diogo Silva on 10/26/20.
 //
 
-import Cocoa
+import Foundation
 
 /// Finds instances of italic text, removing the delimiter,
 /// and adding the correct font.
 public struct ItalicStyleParser: MarkdownParser, RegexBasedParser {
     /// The font that should be used for italic text
-    public let font: NSFont
+    public let font: MKFont
 
     /// Initialize a italic text parser
     /// - Parameter font: The font that should be used for bold text.
     /// Defaults to the italic system font, of size 14.
-    public init(font: NSFont? = nil) {
+    public init(font: MKFont? = nil) {
         self.font = font ?? .italicSystemFont(ofSize: 14)
         self.attributes = [.font: self.font]
     }

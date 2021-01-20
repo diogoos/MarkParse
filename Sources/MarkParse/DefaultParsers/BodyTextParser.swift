@@ -5,7 +5,7 @@
 //  Created by Diogo Silva on 10/25/20.
 //
 
-import Cocoa
+import Foundation
 
 /// Parses any given text into a body paragraph.
 /// - Warning: This should **always** be the last item in the array of parsers, because

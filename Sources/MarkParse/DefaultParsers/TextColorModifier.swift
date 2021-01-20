@@ -5,19 +5,19 @@
 //  Created by Diogo Silva on 10/26/20.
 //
 
-import Cocoa
+import Foundation
 
 /// This modifier applies a given text color wherever no text color has been defined.
 /// It acts as a replacement for the default foreground color (black),
 /// while maintaing other applied color attributes intact.
 public struct TextColorModifier: MarkdownParser {
-    /// NSColor that should be used when no other color attributes are defined.
-    public let defaultColor: NSColor
+    /// MKColor that should be used when no other color attributes are defined.
+    public let defaultColor: MKColor
 
     /// Initialize a new text color modifier
-    /// - Parameter defaultColor: The NSColor that should be used when no other color attributes are defined.
+    /// - Parameter defaultColor: The MKColor that should be used when no other color attributes are defined.
     /// this defaults to the text color.
-    public init(defaultColor: NSColor = .textColor) {
+    public init(defaultColor: MKColor = .textColor) {
         self.defaultColor = defaultColor
     }
 

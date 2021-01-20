@@ -5,17 +5,17 @@
 //  Created by Diogo Silva on 10/25/20.
 //
 
-import Cocoa
+import Foundation
 
 /// Parses code blocks, removing the delimiters, and adding font and background attributes.
 /// - Note: This structure could be converted to conform to a regex based parser,
 /// however, to add code highlighting in the future, it will currently retain it's custom implementation
 public struct CodeBlockParser: MarkdownParser {
     /// The font that should be used inside code blocks.
-    public let font: NSFont
+    public let font: MKFont
 
     /// The background color that should be used for code blocks
-    public let backgroundColor: NSColor
+    public let backgroundColor: MKColor
 
     /// A regular expression that searches for the defined delimiter, capturing the text next to the first line,
     /// and capturing the text in between the two instances of the delimiter.
@@ -28,8 +28,8 @@ public struct CodeBlockParser: MarkdownParser {
     /// Defaults to monospaced system font, size 14.
     /// - Parameter backgroundColor: The background color that should be used
     /// in code blocks. Defaults to the window color.
-    public init(font: NSFont = .monospacedSystemFont(ofSize: 14, weight: .regular),
-                backgroundColor: NSColor = .windowBackgroundColor) {
+    public init(font: MKFont = .systemFont(ofSize: 14),//.monospacedSystemFont(ofSize: 14, weight: .regular),
+                backgroundColor: MKColor = .backgroundColor) {
         self.font = font
         self.backgroundColor = backgroundColor
     }

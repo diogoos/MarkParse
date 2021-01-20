@@ -5,16 +5,16 @@
 //  Created by Diogo Silva on 10/26/20.
 //
 
-import Cocoa
+import Foundation
 
 /// Finds instances of inline code, and applies
 /// the speciifed styling.
 public struct InlineCodeStyleParser: MarkdownParser, RegexBasedParser {
     /// The font that should be used for inline code
-    public let font: NSFont
+    public let font: MKFont
 
     /// The color that should be used in the background of inline code.
-    public let backgroundColor: NSColor
+    public let backgroundColor: MKColor
 
     /// Initialize a bold text parser
     /// - Parameter font: The font that should be used for bold text.
@@ -22,8 +22,8 @@ public struct InlineCodeStyleParser: MarkdownParser, RegexBasedParser {
     /// - Parameter backgroundColor: The background color
     /// that should be used for inline code. Defaults to the window
     /// color.
-    public init(font: NSFont = .monospacedSystemFont(ofSize: 14, weight: .regular),
-                backgroundColor: NSColor = .windowBackgroundColor) {
+    public init(font: MKFont = .systemFont(ofSize: 14),//.monospacedSystemFont(ofSize: 14, weight: .regular),
+                backgroundColor: MKColor = .backgroundColor) {
         self.font = font
         self.backgroundColor = backgroundColor
         self.attributes = [.font: font, .backgroundColor: backgroundColor]

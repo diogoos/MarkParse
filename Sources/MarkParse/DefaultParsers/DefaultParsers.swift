@@ -5,7 +5,7 @@
 //  Created by Diogo Silva on 10/25/20.
 //
 
-import Cocoa
+import Foundation
 
 extension MarkdownRenderer {
     /// An array containing the default parsers that are included with the framework
@@ -22,6 +22,6 @@ extension MarkdownRenderer {
         InlineCodeStyleParser(),
         BodyParser(),
         TextColorModifier(),
-        FontModifier(defaultFont: NSFont.systemFont(ofSize: 14))
+        FontModifier(defaultFont: MKFont.systemFont(ofSize: 14))
     ]
 }

@@ -5,18 +5,18 @@
 //  Created by Diogo Silva on 10/25/20.
 //
 
-import Cocoa
+import Foundation
 
 /// Finds instances of bold text, removing the delimiter,
 /// and adding the correct font.
 public struct BoldStyleParser: MarkdownParser, RegexBasedParser {
     /// The font that should be used for bold text
-    public let font: NSFont
+    public let font: MKFont
 
     /// Initialize a bold text parser
     /// - Parameter font: The font that should be used for bold text.
     /// Defaults to the bold system font, of size 14.
-    public init(font: NSFont = .boldSystemFont(ofSize: 14)) {
+    public init(font: MKFont = .boldSystemFont(ofSize: 14)) {
         self.font = font
         self.attributes = [.font: font]
     }

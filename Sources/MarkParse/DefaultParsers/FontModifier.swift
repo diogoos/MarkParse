@@ -5,18 +5,18 @@
 //  Created by Diogo Silva on 10/25/20.
 //
 
-import Cocoa
+import Foundation
 
 /// This modifier applies a given font wherever no font has been defined.
 /// It acts as a replacement for the default NSAttributedString font (which is Helvetica pt. 12),
 /// while maintaing other applied font attributes intact.
 public struct FontModifier: MarkdownParser {
-    /// NSFont that should be used when no other font attributes are defined.
-    public let defaultFont: NSFont
+    /// MKFont that should be used when no other font attributes are defined.
+    public let defaultFont: MKFont
 
     /// Initialize a new FontModifier
-    /// - Parameter defaultFont: The NSFont that should be used when no other font attributes are defined.
-    public init(defaultFont: NSFont) {
+    /// - Parameter defaultFont: The MKFont that should be used when no other font attributes are defined.
+    public init(defaultFont: MKFont) {
         self.defaultFont = defaultFont
     }
 

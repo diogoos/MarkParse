@@ -5,7 +5,13 @@
 //  Created by Diogo Silva on 10/25/20.
 //
 
-import Cocoa
+import Foundation
+
+#if canImport(UIKit)
+import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 /// Parses thematic breaks in markdown, which are identified
 /// by lines only containing a sequence of at least two `-`
@@ -23,11 +29,12 @@ public struct ThematicBreakParser: MarkdownParser {
         return nil
     }
 
+    #if canImport(AppKit)
     /// Draws a thematic break
-    internal class ThematicBreakAttachmentCell: NSTextAttachmentCell {
+    internal class ThematicBreakAttachmentCell: MKTextAttachmentCell {
         /// Calculates the cell frame, which should begin at the farthest point,
         /// going to the end of the line, with a height of 15
-        internal override func cellFrame(for textContainer: NSTextContainer,
+        internal override func cellFrame(for textContainer: MKTextContainer,
                                          proposedLineFragment lineFrag: NSRect,
                                          glyphPosition position: NSPoint,
                                          characterIndex charIndex: Int) -> NSRect {
@@ -37,7 +44,7 @@ public struct ThematicBreakParser: MarkdownParser {
         /// Draws the thematic break using the text color at half opacity, at the vertical center,
         /// with a thickness of 1.5
         internal override func draw(withFrame cellFrame: NSRect, in controlView: NSView?) {
-            NSColor.textColor.withAlphaComponent(0.5).set()
+            MKColor.textColor.withAlphaComponent(0.5).set()
 
             var fillFrame = cellFrame.insetBy(dx: 2, dy: 0)
             fillFrame.origin.y += 15/2
@@ -45,14 +52,46 @@ public struct ThematicBreakParser: MarkdownParser {
             fillFrame.fill()
         }
     }
+    #elseif canImport(UIKit)
+    internal class ThematicBreakAttachmentCell: MKTextAttachment {
+        override func attachmentBounds(for textContainer: NSTextContainer?, proposedLineFragment lineFrag: CGRect, glyphPosition position: CGPoint, characterIndex charIndex: Int) -> CGRect {
+
+            let width = (textContainer?.size.width) ?? 100
+            return CGRect(origin: .zero, size: CGSize(width: width, height: 2))
+        }
+
+        override func image(forBounds imageBounds: CGRect, textContainer: NSTextContainer?, characterIndex charIndex: Int) -> UIImage? {
+            UIGraphicsBeginImageContext(bounds.size)
+            let ctx = UIGraphicsGetCurrentContext()
+
+            let rect = CGRect(origin: .zero, size: bounds.size)
+            ctx?.setFillColor(UIColor.textColor.cgColor)
+            ctx?.fill(rect)
+
+            guard let drawnImage = UIGraphicsGetImageFromCurrentImageContext() else {
+                print("There was an issue drawing the thematic break attachment cell!!!")
+                return nil
+            }
+
+            return drawnImage
+        }
+    }
+    #endif
 
     /// The `ThematicBreakAttachmentCell`'s NSAttributedString representation
     internal class ThematicBreakAttachment: NSAttributedString {
         /// Initialize a `ThematicBreakAttachmentCell` and add it to an empty attributed string
         internal override convenience init() {
-            let textAttachment = NSTextAttachment()
+
+            #if canImport(AppKit)
+
+            let textAttachment = MKTextAttachment()
             textAttachment.attachmentCell = ThematicBreakAttachmentCell()
             self.init(attachment: textAttachment)
+
+            #elseif canImport(UIKit)
+            self.init(attachment: ThematicBreakAttachmentCell())
+            #endif
         }
     }
 }

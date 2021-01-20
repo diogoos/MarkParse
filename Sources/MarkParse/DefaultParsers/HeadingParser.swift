@@ -5,7 +5,8 @@
 //  Created by Diogo Silva on 10/25/20.
 //
 
-import Cocoa
+import Foundation
+import CoreGraphics
 
 /// Parses Markdown headings, identified by #s in the beginning of lines.
 /// Takes into consideration the levels for each heading, from h1 through h6.
@@ -30,7 +31,7 @@ public struct HeadingParser: MarkdownParser {
     ]
 
     /// The font family that headings should conform to. By default, this is the bold system font.
-    public let fontFamily: NSFont
+    public let fontFamily: MKFont
 
     /// The base font size for a heading - the size of all headings are calculated based on this
     public let baseFontSize: CGFloat
@@ -44,13 +45,18 @@ public struct HeadingParser: MarkdownParser {
     /// and the specified fontFamily
     /// - Precondition: The heading level must not be lower than 1 or higher than 6
     /// - Parameter forHeadingLevel: The heading level as an integer - 1 is higher, 6 is lower
-    /// - Returns: An NSFont element that uses the specified font family, base font size, and conversion table
-    private func headingFont(forLevel level: Int) -> NSFont {
+    /// - Returns: An MKFont element that uses the specified font family, base font size, and conversion table
+    private func headingFont(forLevel level: Int) -> MKFont {
         precondition(level > 0 && level <= 6, "Invalid heading level \(level): heading level must be between 1 and 6")
 
         let fontSize = baseFontSize * fontSizeConversionTable[level]!
         let fontDescriptor = fontFamily.fontDescriptor.withSize(fontSize)
-        return NSFont(descriptor: fontDescriptor, size: fontSize) ?? .systemFont(ofSize: fontSize)
+
+        #if canImport(AppKit)
+        return MKFont(descriptor: fontDescriptor, size: fontSize) ?? .systemFont(ofSize: fontSize)
+        #elseif canImport(UIKit)
+        return MKFont(descriptor: fontDescriptor, size: fontSize)
+        #endif
     }
 
     /// Initalize a new Heading Parser
@@ -59,14 +65,16 @@ public struct HeadingParser: MarkdownParser {
     /// the size of all headings are calculated based on this
     /// - Parameter fontSizeConversionTable: The conversion table for font sizes in headers.
     /// See also `HeadingSizeTable`
-    init(fontFamily: NSFont = .boldSystemFont(ofSize: 16),
-         baseFontSize: CGFloat = 16,
-         fontSizeConversionTable: HeadingSizeTable = Self.defaultSizeTable) {
+    public init(fontFamily: MKFont = .boldSystemFont(ofSize: 16),
+                baseFontSize: CGFloat = 16,
+                fontSizeConversionTable: HeadingSizeTable? = nil) {
         self.fontFamily = fontFamily
         self.baseFontSize = baseFontSize
-        self.fontSizeConversionTable = fontSizeConversionTable
+        self.fontSizeConversionTable = fontSizeConversionTable ?? Self.defaultSizeTable
     }
 
+    /// Count the number of sequential #s in the beginning of the string.
+    /// If this value ranges from 1 to 6, apply the correct heading styling.
     public func define(line: String) -> NSAttributedString? {
         if line.count < 2 { return nil } // at *minimum* we need a # and a space (2 characters)
         if !line.starts(with: "#") { return nil } // if we don't have any #, continue
@@ -97,7 +105,7 @@ public struct HeadingParser: MarkdownParser {
         ])
 
         // add a thematic break attachment
-//        if headingLevel < 3 { result.append(ThematicBreakAttachment) }
+        if headingLevel < 3 { result.append(ThematicBreakParser.ThematicBreakAttachment()) }
 
         return result as NSAttributedString
     }

@@ -5,14 +5,14 @@
 //  Created by Diogo Silva on 10/26/20.
 //
 
-import Cocoa
+import Foundation
 
 /// Finds and parses instances of strikethrough text
 public struct StrikethroughStyleParser: MarkdownParser, RegexBasedParser {
     /// Initialize a strikethrough text parser
     /// - Parameter strikethroughStyle: The style that should be used
     /// for strikethrough text.
-    public init(strikethroughStyle: NSUnderlineStyle = .single) {
+    public init(strikethroughStyle: MKUnderlineStyle = .single) {
         self.attributes = [.strikethroughStyle: strikethroughStyle.rawValue]
     }
 
