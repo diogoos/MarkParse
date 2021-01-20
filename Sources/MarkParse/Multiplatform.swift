@@ -27,24 +27,14 @@ extension UIColor {
             return UIColor.label
         } else {
             #if os(tvOS)
-            return UIColor.black
+            return UIColor.white
             #else
             return UIColor.darkText
             #endif
         }
     }()
 
-    public static let backgroundColor: UIColor = {
-        if #available(iOS 13.0, *) {
-            #if os(tvOS)
-            return UIColor.white
-            #else
-            return UIColor.systemBackground
-            #endif
-        } else {
-            return UIColor.white
-        }
-    }()
+    public static let windowBackgroundColor: UIColor = UIColor.gray
 }
 
 #elseif canImport(AppKit)
@@ -57,10 +47,6 @@ public typealias MKUnderlineStyle = NSUnderlineStyle
 public typealias MKParagraphStyle = NSParagraphStyle
 public typealias MKMutableParagraphStyle = NSMutableParagraphStyle
 public typealias MKTextTab = NSTextTab
-
-extension NSColor {
-    public static let backgroundColor = NSColor.windowBackgroundColor
-}
 
 #else
 

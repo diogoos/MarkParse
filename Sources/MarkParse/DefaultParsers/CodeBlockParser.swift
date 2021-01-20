@@ -28,8 +28,8 @@ public struct CodeBlockParser: MarkdownParser {
     /// Defaults to monospaced system font, size 14.
     /// - Parameter backgroundColor: The background color that should be used
     /// in code blocks. Defaults to the window color.
-    public init(font: MKFont = .systemFont(ofSize: 14),//.monospacedSystemFont(ofSize: 14, weight: .regular),
-                backgroundColor: MKColor = .backgroundColor) {
+    public init(font: MKFont = .monospaceSystemFont(ofSize: 14),
+                backgroundColor: MKColor = .windowBackgroundColor) {
         self.font = font
         self.backgroundColor = backgroundColor
     }

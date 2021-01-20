@@ -22,8 +22,8 @@ public struct InlineCodeStyleParser: MarkdownParser, RegexBasedParser {
     /// - Parameter backgroundColor: The background color
     /// that should be used for inline code. Defaults to the window
     /// color.
-    public init(font: MKFont = .systemFont(ofSize: 14),//.monospacedSystemFont(ofSize: 14, weight: .regular),
-                backgroundColor: MKColor = .backgroundColor) {
+    public init(font: MKFont = .monospaceSystemFont(ofSize: 14),
+                backgroundColor: MKColor = .windowBackgroundColor) {
         self.font = font
         self.backgroundColor = backgroundColor
         self.attributes = [.font: font, .backgroundColor: backgroundColor]
