@@ -84,6 +84,7 @@ public struct HeadingParser: MarkdownParser {
 
         // count how many # we have in the beginning of the line
         repeat {
+            if headingLevel >= line.count { return nil }
             lastChar = line[line.index(line.startIndex, offsetBy: headingLevel)]
             headingLevel += 1
         } while lastChar == "#"
